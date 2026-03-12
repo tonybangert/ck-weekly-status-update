@@ -37,7 +37,7 @@ const milestones = [
   {
     id: 2,
     week: "Week 1",
-    date: "Wed 3/11",
+    date: "Tues 3/10",
     title: "HubSpot Connected",
     subtitle: "CRM integration live",
     status: "complete",
