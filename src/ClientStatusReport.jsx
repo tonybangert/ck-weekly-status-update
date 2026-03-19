@@ -174,7 +174,7 @@ const milestones = [
       "Update dashboard with revised metrics",
       "Prepare for secondary review",
     ],
-    deliverables: ["Refined dashboard incorporating stakeholder feedback with updated metrics and scoring logic"],
+    deliverables: ["Deployed 14 platform updates including a new Insight Engine that cross-references 13 data dimensions to surface hidden revenue patterns, composite ICP scoring with adjustable weighting, global pipeline filtering across all views, and performance optimizations that cut repeat load times from 16 seconds to instant"],
     sprintData: [
       "14 commits — 8 features, 6 fixes",
       "Composite ICP Scoring: 5-dimension scoring (win rate, deal size, cycle speed, rep efficiency, expansion rate) with client-side weight sliders",
