@@ -406,8 +406,35 @@ function MilestoneCard({ milestone, isExpanded, onToggle, index }) {
             gridTemplateColumns: milestone.sprintData ? "1fr 1fr 1fr" : "1fr 1fr",
             gap: 0,
           }}>
+            <div style={{ paddingRight: 20 }}>
+              <div style={{
+                fontSize: 12, fontWeight: 700, letterSpacing: "0.1em",
+                color: BRAND.orange, marginBottom: 10, textTransform: "uppercase",
+              }}>
+                Scope
+              </div>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 4 }}>
+                {milestone.details.map((d, i) => (
+                  <li key={i} style={{
+                    fontSize: 15, color: "rgba(255,255,255,0.75)",
+                    lineHeight: 1.6, paddingLeft: 16, position: "relative",
+                  }}>
+                    <span style={{
+                      position: "absolute", left: 0, top: 10,
+                      width: 5, height: 5, borderRadius: "50%",
+                      background: "rgba(255,255,255,0.3)",
+                    }} />
+                    {d}
+                  </li>
+                ))}
+              </ul>
+            </div>
             {milestone.sprintData && (
-              <div style={{ paddingRight: 20 }}>
+              <div style={{
+                borderLeft: "1px solid rgba(255,255,255,0.1)",
+                paddingLeft: 20,
+                paddingRight: 20,
+              }}>
                 <div style={{
                   fontSize: 12, fontWeight: 700, letterSpacing: "0.1em",
                   color: BRAND.orange, marginBottom: 10, textTransform: "uppercase",
@@ -433,33 +460,6 @@ function MilestoneCard({ milestone, isExpanded, onToggle, index }) {
                 )}
               </div>
             )}
-            <div style={{
-              borderLeft: milestone.sprintData ? "1px solid rgba(255,255,255,0.1)" : "none",
-              paddingLeft: milestone.sprintData ? 20 : 0,
-              paddingRight: 20,
-            }}>
-              <div style={{
-                fontSize: 12, fontWeight: 700, letterSpacing: "0.1em",
-                color: BRAND.orange, marginBottom: 10, textTransform: "uppercase",
-              }}>
-                Scope
-              </div>
-              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 4 }}>
-                {milestone.details.map((d, i) => (
-                  <li key={i} style={{
-                    fontSize: 15, color: "rgba(255,255,255,0.75)",
-                    lineHeight: 1.6, paddingLeft: 16, position: "relative",
-                  }}>
-                    <span style={{
-                      position: "absolute", left: 0, top: 10,
-                      width: 5, height: 5, borderRadius: "50%",
-                      background: "rgba(255,255,255,0.3)",
-                    }} />
-                    {d}
-                  </li>
-                ))}
-              </ul>
-            </div>
             <div style={{
               borderLeft: "1px solid rgba(255,255,255,0.1)",
               paddingLeft: 20,
