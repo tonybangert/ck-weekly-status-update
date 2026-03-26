@@ -242,13 +242,23 @@ const milestones = [
     subtitle: "Guided first look at the live environment",
     status: "active",
     details: [
-      "Provision platform access and credentials",
-      "Guided walkthrough of dashboards, views, and navigation",
-      "Validate data pipelines and model outputs in production",
-      "Set expectations for Week 1 self-directed exploration",
+      "Add ICP & persona ranking across 5 composite scoring variables (UX input method refinement)",
+      "Ingestion of Q1 Jan/Feb actuals data",
+      "Pare down Insights tab to only include 4 initial categories to build from",
+      "Complete HubSpot ETL pipeline for contacts, companies, and deals",
     ],
-    deliverables: ["Full platform access with guided walkthrough of live dashboards, views, and navigation"],
-    sprintData: [],
+    deliverables: [
+      "Live HubSpot sync pipeline: full ETL for contacts, companies, deals with upsert, field mapping, and incremental association resolution",
+      "CRM hygiene scanner: stale record detection, orphan finder, source reconciliation with audit trail",
+      "AI analyst upgraded to Claude Opus 4.6 with XML-structured prompts and extended thinking enabled",
+      "CK auth configuration and set up",
+    ],
+    sprintData: [
+      "Live re-sync of all HubSpot data",
+      "Dashboard nav: nav, tabs, filters, drill downs",
+      "External authorization configuration",
+      "Q1 actuals spreadsheet ingestion and exploration",
+    ],
   },
   {
     id: 6,
@@ -498,14 +508,35 @@ function MilestoneCard({ milestone, isExpanded, onToggle, index }) {
                     {milestone.sprintData.map((d, i) => (
                       <li key={i} style={{
                         fontSize: 15, color: "rgba(255,255,255,0.75)",
-                        lineHeight: 1.6, paddingLeft: 16, position: "relative",
+                        lineHeight: 1.6, paddingLeft: typeof d === "string" ? 16 : 0, position: "relative",
                       }}>
-                        <span style={{
-                          position: "absolute", left: 0, top: 10,
-                          width: 5, height: 5, borderRadius: "50%",
-                          background: "rgba(255,255,255,0.3)",
-                        }} />
-                        {d}
+                        {typeof d === "string" ? (
+                          <>
+                            <span style={{
+                              position: "absolute", left: 0, top: 10,
+                              width: 5, height: 5, borderRadius: "50%",
+                              background: "rgba(255,255,255,0.3)",
+                            }} />
+                            {d}
+                          </>
+                        ) : (
+                          <span style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+                            <span style={{
+                              fontSize: 9, fontWeight: 700, letterSpacing: "0.08em",
+                              padding: "2px 6px", borderRadius: 3, flexShrink: 0,
+                              color: { FEAT: BRAND.green, FIX: BRAND.orange, TEST: "#60a5fa" }[d.tag],
+                              background: { FEAT: "rgba(34,197,94,0.12)", FIX: "rgba(250,168,64,0.12)", TEST: "rgba(96,165,250,0.12)" }[d.tag],
+                            }}>
+                              {d.tag}
+                            </span>
+                            <span style={{ flex: 1 }}>{d.text}</span>
+                            <span style={{
+                              fontSize: 11, color: "rgba(255,255,255,0.3)", flexShrink: 0,
+                            }}>
+                              {d.date}
+                            </span>
+                          </span>
+                        )}
                       </li>
                     ))}
                   </ul>
