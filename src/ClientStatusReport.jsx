@@ -240,7 +240,7 @@ const milestones = [
     date: "Fri 3/27",
     title: "Platform Access & Walkthrough",
     subtitle: "Guided first look at the live environment",
-    status: "active",
+    status: "complete",
     details: [
       "Add ICP & persona ranking across 5 composite scoring variables (UX input method refinement)",
       "Ingestion of Q1 Jan/Feb actuals data",
@@ -259,6 +259,71 @@ const milestones = [
       "External authorization configuration",
       "Q1 actuals spreadsheet ingestion and exploration",
     ],
+    meetingNotes: {
+      sections: [
+        {
+          heading: "Business Reviews Implementation Discussion",
+          items: [
+            "Kevin discussed implementing business reviews for Pittsburgh multi-location customers, sharing an experience conducting one with a Pittsburgh customer in Virginia Beach",
+            "Tony and Kevin agreed on the importance of these touchpoints for selling opportunities and controlling conversations",
+            "Weekend plans: Kevin traveling to Florida, Tony spending time with his daughter during spring break, Paul planning to work, Eric expecting his parents to visit",
+          ],
+        },
+        {
+          heading: "System Performance and AI Upgrades",
+          items: [
+            "Tony reported on recent system adjustments and caching work in progress — current setup pulls real data each time but will be optimized for faster performance",
+            "AI assistant upgraded from Sonnet to Opus for improved context and speed",
+            "Plans to provide access credentials to Kevin on Monday for review",
+            "Tony invited Kevin to examine the system from both a data accuracy perspective and strategic context, particularly regarding how to handle data entry processes when certain team members like Robert won't be using HubSpot",
+          ],
+        },
+        {
+          heading: "Analytics System Updates Discussion",
+          items: [
+            "Updated ICP persona rankings and added January and February actuals",
+            "Kevin explained March actuals would likely be available around April 10–13, as data is compiled from invoiced projects rather than immediate order entries",
+            "Adjustments made to the revenue tab to improve accuracy and create a better pacing report for the quarter",
+            "Plan to walk Kevin through the updated insights tab next week",
+          ],
+        },
+        {
+          heading: "Data Pipeline and Dashboard Updates",
+          items: [
+            "Eric completed two manual full syncs and mapped data directly to HubSpot, identifying areas for data cleanliness and potential behavior changes",
+            "Tony mentioned adjustments to the dashboard, external auth setup, and addition of a revenue tab based on Q1 actuals",
+            "Team encouraged Kevin to use the advisor module to identify additional insights needed in the future",
+          ],
+        },
+        {
+          heading: "Data Integration and Dashboard Planning",
+          items: [
+            "Tony and Kevin agreed to keep forecast data separate from HubSpot rather than importing it due to ERP system limitations",
+            "Reviewed a new dashboard with simplified insights and discussed how it could help marketing understand peak revenue months and plan accordingly",
+            "Kevin will provide updated sales data around the 10th or 11th of each month for the dashboard to refresh",
+            "Plans to eventually enable direct data uploads through the data health section",
+          ],
+        },
+        {
+          heading: "Data Visualization and Insights Review",
+          items: [
+            "Discussed issues with store revenue calculations and year-over-year comparisons",
+            "ICP data shows construction as the top performing category across multiple metrics",
+            "Financial services showed mixed results — dropping in cycle speed metrics but remaining strong in deal size",
+            "Need to investigate how expansion opportunity scores are calculated and flagged for review",
+            "Current categorization using 'Tier 3' language may not be appropriate",
+          ],
+        },
+        {
+          heading: "Dashboard Improvement and Functionality Updates",
+          items: [
+            "Kevin requested enhancements including hover states for insurance data, year-over-year comparisons, and ability to denote former representatives (Dan Geyer, Mike Feeley, and Chloe Layton) in the system",
+            "Next meeting postponed to March 10th due to Kevin's vacation and upcoming rebranding exercise, with plans to schedule a 30-minute feedback session before then",
+            "When asked about desired dashboard features, Kevin emphasized the importance of pipeline health and forward-looking revenue insights over historical data",
+          ],
+        },
+      ],
+    },
   },
   {
     id: 6,
@@ -266,7 +331,7 @@ const milestones = [
     date: "Fri 4/3",
     title: "Week 1 Findings + Rapid Co-Prototyping",
     subtitle: "First-week insights drive live changes together",
-    status: "upcoming",
+    status: "active",
     details: [
       "Review Week 1 observations, questions, and friction points",
       "Identify what's working well and what needs to shift",
@@ -825,7 +890,7 @@ export default function ClientStatusReport() {
             <div style={{
               fontSize: 11, color: BRAND.white, letterSpacing: "0.03em",
             }}>
-              Week 4 of 8 | Meeting: Friday 3/27
+              Week 5 of 8 | Meeting: Friday 4/3
             </div>
             {milestonesWithNotes.length > 0 && (
               <button

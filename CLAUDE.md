@@ -9,27 +9,41 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `npm run preview` — Preview the production build locally
 - `npm run lint` — ESLint (flat config, JS/JSX files)
 
+No test framework is configured.
+
 ## Architecture
 
-This is a single-page React 19 + Vite 8 app (JSX, not TypeScript) that renders a **client engagement status report** for CK Marketing Solutions. There is no routing, no external state management, and no backend.
+Single-page React 19 + Vite 8 app (JSX, not TypeScript) that renders a **client engagement status report** for CK Marketing Solutions. No routing, no state management library, no backend.
 
-### Single-component structure
+### Single-file structure
 
-The entire UI lives in `src/ClientStatusReport.jsx` (~890 lines). It contains:
+The entire UI lives in `src/ClientStatusReport.jsx` (~900 lines). Sub-components are defined in the same file:
 
-- **`milestones` array** — All engagement data (scope, deliverables, sprint data, meeting notes) is hardcoded here. Each milestone has a `status` of `"complete"`, `"active"`, or `"upcoming"`.
-- **`BRAND` object** — The color palette (navy, orange, green, grays). All components reference this for consistency.
-- **Components** (all in the same file): `StatusIcon`, `ProgressBar`, `MilestoneCard`, `MeetingNotesModal`, and the default export `ClientStatusReport`.
+- `StatusIcon` — renders a status indicator (checkmark / pulsing dot / empty circle) based on `status`
+- `ProgressBar` — calculates completion % from milestones and renders a progress bar
+- `MilestoneCard` — expandable card for each milestone; grid layout adapts columns based on whether `sprintData` exists (2-col vs 3-col)
+- `MeetingNotesModal` — modal that displays structured meeting notes for milestones that have them
+- `ClientStatusReport` (default export) — root component managing `expandedId` and `showNotes` state
 
-### Styling approach
+### Data model
 
-All styles are **inline** via React `style` props — no CSS framework, no CSS modules. CSS animations (`@keyframes`) are injected via a `<style>` tag inside the component. The only external CSS is `src/index.css` which resets margins/padding.
+All engagement data is hardcoded in the `milestones` array at the top of the file. Each milestone object:
 
-### Key patterns
+```
+{ id, week, date, title, subtitle, status, details[], deliverables[] }
+```
 
-- Milestone expansion state is toggled via `expandedId` in the root component.
-- Meeting notes modal renders conditionally and filters milestones that have a `meetingNotes` property.
-- Grid layout in expanded cards adapts columns based on whether `sprintData` exists (2-col vs 3-col).
+Optional fields that change rendering behavior:
+- `sprintData[]` — when present, the expanded card uses a 3-column grid (adds a "Sprint Data" column)
+- `meetingNotes { sections[] }` — when present, the milestone appears in the Meeting Notes modal; each section has `heading` and `items[]`
+
+The `statusConfig` object maps `status` values (`"complete"`, `"active"`, `"upcoming"`) to display labels, colors, and icon types.
+
+### Styling
+
+All styles are **inline** via React `style` props — no CSS framework, no CSS modules. CSS animations (`@keyframes`) are injected via a `<style>` tag inside the root component. The only external CSS is `src/index.css` (reset only).
+
+Colors come from the `BRAND` object (navy/orange/green palette). All components reference this for consistency.
 
 ## Lint
 
