@@ -331,7 +331,7 @@ const milestones = [
     date: "Fri 4/3",
     title: "Week 1 Findings + Rapid Co-Prototyping",
     subtitle: "First-week insights drive live changes together",
-    status: "active",
+    status: "complete",
     details: [
       "Review Week 1 observations, questions, and friction points",
       "Identify what's working well and what needs to shift",
@@ -347,7 +347,7 @@ const milestones = [
     date: "Fri 4/10",
     title: "Deep Refinement & Workflow Integration",
     subtitle: "Tuning the platform to real workflows",
-    status: "upcoming",
+    status: "active",
     details: [
       "Apply co-prototyping refinements from Week 5",
       "Map platform outputs to actual decision-making workflows",
@@ -390,6 +390,62 @@ const milestones = [
     sprintData: [],
   },
 ];
+
+const CK_INSIGHTS = {
+  stats: [
+    { value: "$6.4M", label: "Unassigned Revenue" },
+    { value: "46%", label: "Closed-Lost Rate", variant: "alert" },
+    { value: "38K", label: "Inactive Contacts" },
+    { value: "+8.8%", label: "YoY Revenue Growth", variant: "positive" },
+  ],
+  insights: [
+    {
+      title: "$6.4M in growing accounts have no assigned rep",
+      metricValue: "$6.4M",
+      metricLabel: "At Risk",
+      body: 'The Intelligence tab flagged 4 accounts worth $6.4M that are growing but sitting in "House" with no dedicated coverage. Herc Rentals alone is forecasted at $6.2M with a perfect 100/100 growth score, and nobody owns it.',
+      salesAction: "This is the single biggest revenue-at-risk opportunity to claim. Assign reps to all 4 accounts this week.",
+      marketingAction: "Exclude these accounts from generic nurture. Treat as priority hand-raisers needing a warm handoff, not more drip emails.",
+      theme: "navy",
+    },
+    {
+      title: "46% closed-lost rate is bleeding pipeline, concentrated on a few reps",
+      metricValue: "46%",
+      metricLabel: "Lost Rate",
+      body: "Out of 220 deals, 102 are closed-lost with $59.2M in lost revenue dwarfing the $19.3M in wins. Several reps show 0% win rates while Jerry Brauneis and Robert Conte close at 67-75%. The gap between top and bottom performers is enormous.",
+      salesAction: "Study deal motion of top closers (deal size, velocity, stage progression). Use as the coaching template across the team.",
+      marketingAction: "Leads routed to underperforming reps are being wasted. Lead scoring and routing rules need a hard look immediately.",
+      theme: "red",
+    },
+    {
+      title: "58% of contacts are inactive: a massive re-engagement opportunity",
+      metricValue: "38K",
+      metricLabel: "Sleeping",
+      body: "Only 26,957 active contacts out of nearly 65,000, with an average engagement score of just 40.2. That is a sleeping database with significant latent value.",
+      salesAction: "Focus outreach on the ~27K active contacts where signals exist. Stop spraying across the full list.",
+      marketingAction: "Run a targeted reactivation campaign against the 38K inactive contacts, segmented by Construction and Insurance where win rates are strongest.",
+      theme: "navy",
+    },
+    {
+      title: "Construction is the best-performing vertical and it is being under-invested",
+      metricValue: "41.7%",
+      metricLabel: "Win Rate",
+      body: "Construction leads with $14.4M in revenue, a 41.7% win rate, and $1.2M average deal size across 224 companies. Financial Services (50% win rate, $1.9M avg) and Accounting (50%, $625K) show even better conversion on smaller samples. You are currently spreading resources across 41 industries.",
+      salesAction: "Prioritize prospecting in Construction and Financial Services where the data proves deals close more often and bigger.",
+      marketingAction: "Shift content, case studies, and ad spend toward top verticals. Spreading across 41 industries dilutes effectiveness.",
+      theme: "orange",
+    },
+    {
+      title: "Revenue is growing YoY (+8.8%) but momentum is decelerating month-over-month",
+      metricValue: "-1.9%",
+      metricLabel: "MoM Trend",
+      body: "Q1 came in at $18.8M against a $17.3M prior year. But March ($6.1M) dipped from February ($6.2M), and the Intelligence tab flagged 23 accounts decelerating in Q1 with $1.1M at risk. The April forecast ($7.2M) is ambitious.",
+      salesAction: "The 23 decelerating accounts need proactive check-ins now before Q1 dip becomes a full-year trend.",
+      marketingAction: "March slowdown signals a need to accelerate pipeline generation into Q2. The April forecast needs more top-of-funnel support.",
+      theme: "orange",
+    },
+  ],
+};
 
 const statusConfig = {
   complete: { label: "Complete", color: BRAND.green, bg: "rgba(34,197,94,0.12)", icon: "checkmark" },
@@ -763,9 +819,294 @@ function MeetingNotesModal({ milestonesWithNotes, onClose }) {
   );
 }
 
+function InsightCard({ insight, index }) {
+  const themes = {
+    navy: { numberBg: "#102d50", numberColor: "#fff", metricColor: "#102d50" },
+    red: { numberBg: "#ef4537", numberColor: "#fff", metricColor: "#ef4537" },
+    orange: { numberBg: "#faa840", numberColor: "#102d50", metricColor: "#faa840" },
+  };
+  const t = themes[insight.theme];
+
+  return (
+    <div style={{
+      marginBottom: 24, padding: "24px 28px",
+      background: "#fff", borderRadius: 10,
+      border: "1px solid rgba(16,45,80,0.07)",
+      position: "relative",
+    }}>
+      <div style={{
+        position: "absolute", top: -1, left: -1,
+        width: 32, height: 32, borderRadius: "10px 0 8px 0",
+        display: "flex", alignItems: "center", justifyContent: "center",
+        fontSize: 13, fontWeight: 700,
+        color: t.numberColor, background: t.numberBg,
+      }}>
+        {index + 1}
+      </div>
+      <div style={{
+        display: "flex", alignItems: "flex-start", gap: 16,
+        marginBottom: 14, paddingLeft: 24,
+      }}>
+        <div style={{ flex: 1 }}>
+          <div style={{
+            fontFamily: "'DM Serif Display', serif",
+            fontSize: 17, lineHeight: 1.3, color: "#102d50",
+          }}>
+            {insight.title}
+          </div>
+        </div>
+        <div style={{ flexShrink: 0, textAlign: "right", minWidth: 80 }}>
+          <div style={{
+            fontFamily: "'DM Serif Display', serif",
+            fontSize: 26, lineHeight: 1, letterSpacing: "-0.02em",
+            color: t.metricColor,
+          }}>
+            {insight.metricValue}
+          </div>
+          <div style={{
+            fontSize: 10, fontWeight: 600, textTransform: "uppercase",
+            letterSpacing: "0.08em", color: "#64748b", marginTop: 2,
+          }}>
+            {insight.metricLabel}
+          </div>
+        </div>
+      </div>
+      <div style={{
+        fontSize: 13.5, color: "#3d4f63", lineHeight: 1.65,
+        marginBottom: 14, paddingLeft: 24,
+      }}>
+        {insight.body}
+      </div>
+      <div style={{
+        display: "grid", gridTemplateColumns: "1fr 1fr",
+        gap: 12, paddingLeft: 24,
+      }}>
+        <div style={{
+          padding: "12px 16px", borderRadius: 8, fontSize: 12.5, lineHeight: 1.55,
+          background: "rgba(16,45,80,0.04)", borderLeft: "3px solid #102d50",
+        }}>
+          <div style={{
+            fontSize: 9, fontWeight: 700, textTransform: "uppercase",
+            letterSpacing: "0.1em", color: "#102d50", marginBottom: 4,
+          }}>
+            Sales Action
+          </div>
+          <div style={{ color: "#4a5568" }}>{insight.salesAction}</div>
+        </div>
+        <div style={{
+          padding: "12px 16px", borderRadius: 8, fontSize: 12.5, lineHeight: 1.55,
+          background: "rgba(250,168,64,0.06)", borderLeft: "3px solid #faa840",
+        }}>
+          <div style={{
+            fontSize: 9, fontWeight: 700, textTransform: "uppercase",
+            letterSpacing: "0.1em", color: "#c07800", marginBottom: 4,
+          }}>
+            Marketing Action
+          </div>
+          <div style={{ color: "#4a5568" }}>{insight.marketingAction}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CKInsightsModal({ onClose }) {
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position: "fixed", inset: 0, zIndex: 1000,
+        background: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)",
+        display: "flex", alignItems: "center", justifyContent: "center",
+        animation: "fadeIn 0.2s ease",
+        padding: 20,
+      }}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          background: "#faf8f5",
+          borderRadius: 16,
+          width: "100%", maxWidth: 900,
+          maxHeight: "90vh", overflowY: "auto",
+          animation: "modalSlideIn 0.25s ease",
+          fontFamily: "'DM Sans', sans-serif",
+          color: "#102d50",
+          lineHeight: 1.6,
+          WebkitFontSmoothing: "antialiased",
+        }}
+      >
+        {/* Header */}
+        <div style={{
+          background: "#102d50",
+          padding: "40px 48px 36px",
+          position: "relative", overflow: "hidden",
+          borderRadius: "16px 16px 0 0",
+        }}>
+          <button
+            onClick={onClose}
+            style={{
+              position: "absolute", top: 12, right: 12,
+              background: "rgba(255,255,255,0.15)", border: "none",
+              color: "rgba(255,255,255,0.7)", width: 32, height: 32,
+              borderRadius: 8, cursor: "pointer", fontSize: 18,
+              display: "flex", alignItems: "center", justifyContent: "center",
+              transition: "background 0.2s", zIndex: 3,
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.background = "rgba(255,255,255,0.3)"}
+            onMouseLeave={(e) => e.currentTarget.style.background = "rgba(255,255,255,0.15)"}
+          >
+            &times;
+          </button>
+          <div style={{
+            position: "absolute", bottom: 0, left: 0, right: 0, height: 4,
+            background: "linear-gradient(90deg, #faa840, #ef4537, #faa840)",
+          }} />
+          <div style={{
+            display: "flex", justifyContent: "space-between", alignItems: "flex-start",
+            marginBottom: 28,
+          }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <div style={{
+                width: 32, height: 32, background: "#faa840", borderRadius: 6,
+                display: "flex", alignItems: "center", justifyContent: "center",
+              }}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#102d50" strokeWidth="2.5" strokeLinecap="round" width="18" height="18">
+                  <path d="M3 12h4l3-9 4 18 3-9h4" />
+                </svg>
+              </div>
+              <div>
+                <div style={{
+                  fontSize: 13, fontWeight: 600,
+                  color: "rgba(255,255,255,0.7)",
+                  letterSpacing: "0.06em", textTransform: "uppercase",
+                }}>
+                  PerformanceLabs.AI
+                </div>
+                <div style={{
+                  fontSize: 10, fontWeight: 500,
+                  color: "rgba(255,255,255,0.4)",
+                  letterSpacing: "0.08em", textTransform: "uppercase", marginTop: 2,
+                }}>
+                  Powered by Aplora Revenue Intelligence
+                </div>
+              </div>
+            </div>
+            <div style={{
+              fontSize: 12, fontWeight: 500,
+              color: "rgba(255,255,255,0.45)",
+              textAlign: "right", letterSpacing: "0.04em",
+            }}>
+              Prepared April 10, 2026<br />
+              <span style={{ color: "rgba(255,255,255,0.3)" }}>Q1 2026 Review</span>
+            </div>
+          </div>
+          <div style={{
+            fontFamily: "'DM Serif Display', serif",
+            fontSize: 32, color: "#fff",
+            lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: 8,
+          }}>
+            CK Marketing: 5 Revenue Signals<br />That Need Action This Week
+          </div>
+          <div style={{
+            fontSize: 15, color: "rgba(255,255,255,0.6)", fontWeight: 400, maxWidth: 620,
+          }}>
+            Extracted from your Aplora Marketing Dashboard. Each insight includes{" "}
+            <strong style={{ color: "#faa840", fontWeight: 600 }}>what we found</strong>,{" "}
+            <strong style={{ color: "#faa840", fontWeight: 600 }}>why it matters</strong>, and{" "}
+            <strong style={{ color: "#faa840", fontWeight: 600 }}>what to do next</strong> for both sales and marketing.
+          </div>
+        </div>
+
+        {/* Body */}
+        <div style={{ padding: "36px 48px 40px" }}>
+          {/* Stats Bar */}
+          <div style={{
+            display: "grid", gridTemplateColumns: "repeat(4, 1fr)",
+            gap: 1, background: "rgba(16,45,80,0.06)",
+            borderRadius: 10, overflow: "hidden", marginBottom: 28,
+          }}>
+            {CK_INSIGHTS.stats.map((stat, i) => (
+              <div key={i} style={{
+                background: "#fff", padding: "16px 20px", textAlign: "center",
+              }}>
+                <div style={{
+                  fontFamily: "'DM Serif Display', serif",
+                  fontSize: 22, lineHeight: 1, letterSpacing: "-0.02em",
+                  color: stat.variant === "alert" ? "#ef4537"
+                    : stat.variant === "positive" ? "#16a34a"
+                    : "#102d50",
+                }}>
+                  {stat.value}
+                </div>
+                <div style={{
+                  fontSize: 10, fontWeight: 600, textTransform: "uppercase",
+                  letterSpacing: "0.06em", color: "#64748b", marginTop: 4,
+                }}>
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Section: Immediate Priority */}
+          <div style={{
+            fontSize: 10, fontWeight: 700, textTransform: "uppercase",
+            letterSpacing: "0.12em", color: "#64748b",
+            marginBottom: 20, display: "flex", alignItems: "center", gap: 10,
+          }}>
+            Immediate Priority
+            <span style={{ flex: 1, height: 1, background: "rgba(16,45,80,0.1)" }} />
+          </div>
+
+          {CK_INSIGHTS.insights.slice(0, 2).map((insight, i) => (
+            <InsightCard key={i} insight={insight} index={i} />
+          ))}
+
+          {/* Priority Break */}
+          <div style={{
+            display: "flex", alignItems: "center", gap: 12,
+            margin: "28px 0 20px",
+          }}>
+            <span style={{ flex: 1, height: 1, background: "rgba(16,45,80,0.1)" }} />
+            <span style={{
+              fontSize: 9, fontWeight: 700, textTransform: "uppercase",
+              letterSpacing: "0.12em", color: "#64748b", whiteSpace: "nowrap",
+            }}>
+              Strategic Opportunities
+            </span>
+            <span style={{ flex: 1, height: 1, background: "rgba(16,45,80,0.1)" }} />
+          </div>
+
+          {CK_INSIGHTS.insights.slice(2).map((insight, i) => (
+            <InsightCard key={i + 2} insight={insight} index={i + 2} />
+          ))}
+        </div>
+
+        {/* Footer */}
+        <div style={{
+          padding: "20px 48px 32px",
+          display: "flex", justifyContent: "space-between", alignItems: "flex-end",
+          borderTop: "1px solid rgba(16,45,80,0.1)",
+          margin: "0 48px",
+        }}>
+          <div style={{ fontSize: 11, color: "#64748b", lineHeight: 1.6 }}>
+            <strong style={{ color: "#102d50", fontWeight: 600 }}>Prepared for CK Marketing</strong> by PerformanceLabs.AI<br />
+            Data source: Aplora Revenue Intelligence Dashboard | Q1 2026
+          </div>
+          <div style={{ fontSize: 11, fontWeight: 600, color: "#faa840", textAlign: "right" }}>
+            Questions? Let&apos;s dig in together.
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function ClientStatusReport() {
   const [expandedId, setExpandedId] = useState(null);
   const [showNotes, setShowNotes] = useState(false);
+  const [showInsights, setShowInsights] = useState(false);
   const activeMilestone = milestones.find((m) => m.status === "active");
   const milestonesWithNotes = milestones.filter((m) => m.meetingNotes);
 
@@ -890,13 +1231,13 @@ export default function ClientStatusReport() {
             <div style={{
               fontSize: 11, color: BRAND.white, letterSpacing: "0.03em",
             }}>
-              Week 5 of 8 | Meeting: Friday 4/3
+              Week 6 of 8 | Meeting: Friday 4/10
             </div>
-            {milestonesWithNotes.length > 0 && (
+            <div style={{ display: "flex", gap: 8, marginTop: 8, justifyContent: "flex-end" }}>
               <button
-                onClick={() => setShowNotes(true)}
+                onClick={() => setShowInsights(true)}
                 style={{
-                  marginTop: 8, padding: "6px 14px",
+                  padding: "6px 14px",
                   fontSize: 11, fontWeight: 600, letterSpacing: "0.04em",
                   color: BRAND.orange, background: "rgba(250,168,64,0.1)",
                   border: `1px solid rgba(250,168,64,0.25)`,
@@ -912,9 +1253,32 @@ export default function ClientStatusReport() {
                   e.currentTarget.style.borderColor = "rgba(250,168,64,0.25)";
                 }}
               >
-                Meeting Notes
+                CK Insights
               </button>
-            )}
+              {milestonesWithNotes.length > 0 && (
+                <button
+                  onClick={() => setShowNotes(true)}
+                  style={{
+                    padding: "6px 14px",
+                    fontSize: 11, fontWeight: 600, letterSpacing: "0.04em",
+                    color: BRAND.orange, background: "rgba(250,168,64,0.1)",
+                    border: `1px solid rgba(250,168,64,0.25)`,
+                    borderRadius: 6, cursor: "pointer",
+                    transition: "all 0.2s",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "rgba(250,168,64,0.18)";
+                    e.currentTarget.style.borderColor = "rgba(250,168,64,0.4)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "rgba(250,168,64,0.1)";
+                    e.currentTarget.style.borderColor = "rgba(250,168,64,0.25)";
+                  }}
+                >
+                  Meeting Notes
+                </button>
+              )}
+            </div>
           </div>
         </div>
 
@@ -977,6 +1341,10 @@ export default function ClientStatusReport() {
         </div>
       </div>
       </div>
+
+      {showInsights && (
+        <CKInsightsModal onClose={() => setShowInsights(false)} />
+      )}
 
       {showNotes && milestonesWithNotes.length > 0 && (
         <MeetingNotesModal
