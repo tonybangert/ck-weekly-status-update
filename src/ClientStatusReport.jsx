@@ -1242,6 +1242,31 @@ export default function ClientStatusReport() {
               Week 7 of 8 | Meeting: Friday 4/17
             </div>
             <div style={{ display: "flex", gap: 8, marginTop: 8, justifyContent: "flex-end" }}>
+              <a
+                href="/CK_Marketing_Exec_Briefing.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  padding: "6px 14px",
+                  fontSize: 11, fontWeight: 600, letterSpacing: "0.04em",
+                  color: BRAND.orange, background: "rgba(250,168,64,0.1)",
+                  border: `1px solid rgba(250,168,64,0.25)`,
+                  borderRadius: 6, cursor: "pointer",
+                  transition: "all 0.2s",
+                  textDecoration: "none",
+                  display: "inline-flex", alignItems: "center",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "rgba(250,168,64,0.18)";
+                  e.currentTarget.style.borderColor = "rgba(250,168,64,0.4)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "rgba(250,168,64,0.1)";
+                  e.currentTarget.style.borderColor = "rgba(250,168,64,0.25)";
+                }}
+              >
+                Exec Briefing
+              </a>
               <button
                 onClick={() => setShowInsights(true)}
                 style={{
