@@ -347,7 +347,7 @@ const milestones = [
     date: "Fri 4/10",
     title: "Deep Refinement & Workflow Integration",
     subtitle: "Tuning the platform to real workflows",
-    status: "active",
+    status: "complete",
     details: [
       "Apply co-prototyping refinements from Week 5",
       "Map platform outputs to actual decision-making workflows",
@@ -363,15 +363,24 @@ const milestones = [
     date: "Fri 4/17",
     title: "Value Validation & KPI Benchmarking",
     subtitle: "Quantifying impact against real outcomes",
-    status: "upcoming",
+    status: "active",
     details: [
       "Benchmark platform insights against pre-engagement baseline",
       "Identify measurable efficiency gains and decision-quality improvements",
       "Document specific use cases where the platform changed an outcome",
       "Capture client perspective on value delivered",
     ],
-    deliverables: ["Pre/post benchmarking of platform impact on efficiency gains and decision quality"],
-    sprintData: [],
+    deliverables: [
+      "Pre/post benchmarking of platform impact on efficiency gains and decision quality",
+      "Production-grade Contact Classification Engine: Live in your CK analyst workflow, running reliably with timeout issues cleared.",
+      "Executive access layer: Secure login deployed, giving your leadership team direct visibility without going through the analyst team.",
+    ],
+    sprintData: [
+      "Lapsed buyer analysis: Dormant customer deep-dive complete. Findings ready for re-engagement.",
+      "Contact Classification Engine: Shipped to production. CK analyst timeout issues resolved.",
+      "Sleeper contact model: Recommendation layer live. Surfaces high-potential contacts inside quiet accounts.",
+      "Executive access: Secure login deployed for your leadership team",
+    ],
   },
   {
     id: 9,
@@ -1231,7 +1240,7 @@ export default function ClientStatusReport() {
             <div style={{
               fontSize: 11, color: BRAND.white, letterSpacing: "0.03em",
             }}>
-              Week 6 of 8 | Meeting: Friday 4/10
+              Week 7 of 8 | Meeting: Friday 4/17
             </div>
             <div style={{ display: "flex", gap: 8, marginTop: 8, justifyContent: "flex-end" }}>
               <button
