@@ -496,7 +496,7 @@ function StatusIcon({ status }) {
 function ProgressBar({ milestones }) {
   const totalWeeks = 8;
   const completedWeeks = new Set(
-    milestones.filter(m => m.status === "complete").map(m => m.week)
+    milestones.filter(m => m.status === "complete" || m.status === "active").map(m => m.week)
   ).size;
   const pct = (completedWeeks / totalWeeks) * 100;
 
