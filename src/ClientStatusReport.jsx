@@ -1325,7 +1325,7 @@ export default function ClientStatusReport() {
             </div>
             <div style={{ display: "flex", gap: 8, marginTop: 8, justifyContent: "flex-end" }}>
               <a
-                href="/CK_Marketing_Exec_Briefing.pdf"
+                href="https://www.dropbox.com/scl/fi/2rc0pyz1cwwmawrfndsy1/CK_Marketing_Exec_Briefing.pdf?rlkey=ezxsw2e14h9thos387aq6r652&st=6tipa2c9&dl=0"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
