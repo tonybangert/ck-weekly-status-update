@@ -362,7 +362,6 @@ const milestones = [
     sprintData: [
       "Lapsed buyer analysis: Dormant customer deep-dive complete. Findings ready for re-engagement.",
       "Contact Classification Engine: Shipped to production. CK analyst timeout issues resolved.",
-      "Sleeper contact model: Recommendation layer live. Surfaces high-potential contacts inside quiet accounts.",
       "Executive access: Secure login deployed for your leadership team",
     ],
   },
