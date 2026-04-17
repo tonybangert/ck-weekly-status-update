@@ -380,6 +380,88 @@ const milestones = [
     ],
     deliverables: ["Pre/post benchmarking of platform impact on efficiency gains and decision quality"],
     sprintData: [],
+    meetingNotes: {
+      sections: [
+        {
+          heading: "Business Development Findings Review",
+          items: [
+            "Kevin shared that he had traveled to Cincinnati and Indianapolis for new business meetings",
+            "Kevin had been working with a Word document to track his findings and planned to share his screen to review his observations about the platform",
+            "Kevin requested feedback from the team, particularly from Tony in his CRO role, to review his findings and provide additional insights",
+          ],
+        },
+        {
+          heading: "Data Implementation and Anomalies Discussion",
+          items: [
+            "Tony shared that he connected with Brad, who provided a new lead and requested an executive summary ahead of an upcoming board meeting",
+            "Identified a discrepancy in HERC account data — system showed no dedicated rep despite having a listed salesperson in HubSpot and the sales dashboard",
+            "Tony explained that this type of anomaly requires both data analysis and understanding the underlying reasons for the discrepancies, suggesting a two-part approach",
+          ],
+        },
+        {
+          heading: "HubSpot Data Visibility Challenges",
+          items: [
+            "Discussed challenges with data visibility in HubSpot, particularly regarding existing customers like Country Financial",
+            "Kevin explained that while he had marked existing customers in HubSpot to prevent new sales efforts, there was a disconnect in how the data was being pulled — Country Financial appearing under 'CC Services' rather than its actual name",
+            "Eric suggested using a semantic layer to capture nuanced information like customer status and train the system based on human insights rather than trying to perfect HubSpot data entry",
+            "Discussion highlighted the need to balance structured data entry with the practical realities of how accounts are managed across different teams",
+          ],
+        },
+        {
+          heading: "HubSpot Data Accuracy Improvements",
+          items: [
+            "Kevin identified data accuracy issues in HubSpot, particularly with silent or inactive accounts, and discussed plans to clean up the system in 2026",
+            "Paul Gardner suggested making UI/UX editable fields to allow for easier data modifications",
+            "Tony and Eric emphasized the importance of isolating and properly categorizing anomalies to avoid misinterpretation by stakeholders, particularly the CFO",
+            "Eric highlighted the need to refine criteria for identifying silent decliners and suggested exploring specific variables to improve data analysis",
+          ],
+        },
+        {
+          heading: "HubSpot Data Management Improvements",
+          items: [
+            "Focused on identifying and addressing silent decliners versus active decliners",
+            "Kevin suggested removing silent decliners from reports and focusing only on the biggest decliners, particularly for customers worth $100,000 and above",
+            "Team agreed to segment data by tiers, dates, and deal sizes",
+            "Eric committed to investigating a discrepancy in the reported $317 million revenue at risk figure, which appeared to be an aggregation error",
+          ],
+        },
+        {
+          heading: "HubSpot Restaurant Pipeline Categorization",
+          items: [
+            "Identified that while restaurant accounts are properly tagged at the contact and account level, deals are defaulting to store pipeline rather than transactional pipeline due to lack of restaurant-specific pipeline or deal types",
+            "Tony suggested adding an industry dropdown field to deals and noted that this could be addressed through better training for executive advisors over time",
+            "Paul Gardner recommended asking the tool's chat feature for additional insights about restaurant deals",
+          ],
+        },
+        {
+          heading: "Restaurant Industry Data Review",
+          items: [
+            "Reviewed data pulled from 179 restaurant industry companies — only three deals were recorded and all were in the store pipeline",
+            "Agreed to add a 2026 budget column for better visibility of year-over-year and budget performance",
+            "Tony confirmed that actuals for Q1 were correctly updated in the system after Kevin's March data was provided",
+            "Clarified that multi-location growth numbers were showing year-over-year projections rather than current performance",
+          ],
+        },
+        {
+          heading: "Data Quality and Persona Mapping",
+          items: [
+            "Kevin identified that the persona with the highest win rate was labeled as 'other' — suggesting better persona mapping is needed",
+            "Kevin plans to present feedback to the sales team on Tuesday using a PowerPoint rather than going through the full review",
+            "Emphasized the importance of clean data for better targeting and segmentation",
+            "Outlined plans to implement industry-focused sales approaches, with Matt Wittenhall serving as an example of success in the construction industry",
+          ],
+        },
+        {
+          heading: "Data Hygiene and Sales Insights",
+          items: [
+            "Kevin noted that George Eichard was now listed as a representative",
+            "Tony suggested using the findings as a benchmark and training tool for new reps, while highlighting the importance of considering ICP and time-to-close metrics, particularly for Q4 financial services sales",
+            "Team agreed to update documentation with strategic recommendations and planned to create a more detailed proposal based on the past eight weeks of data",
+            "Follow-up meeting scheduled for the following Friday that might include Brad",
+          ],
+        },
+      ],
+    },
   },
   {
     id: 9,
@@ -989,7 +1071,7 @@ function CKInsightsModal({ onClose }) {
                   color: "rgba(255,255,255,0.7)",
                   letterSpacing: "0.06em", textTransform: "uppercase",
                 }}>
-                  PerformanceLabs.AI
+                  PerformanceLabs.ai
                 </div>
                 <div style={{
                   fontSize: 10, fontWeight: 500,
@@ -1099,7 +1181,7 @@ function CKInsightsModal({ onClose }) {
           margin: "0 48px",
         }}>
           <div style={{ fontSize: 11, color: "#64748b", lineHeight: 1.6 }}>
-            <strong style={{ color: "#102d50", fontWeight: 600 }}>Prepared for CK Marketing</strong> by PerformanceLabs.AI<br />
+            <strong style={{ color: "#102d50", fontWeight: 600 }}>Prepared for CK Marketing</strong> by PerformanceLabs.ai<br />
             Data source: Aplora Revenue Intelligence Dashboard | Q1 2026
           </div>
           <div style={{ fontSize: 11, fontWeight: 600, color: "#faa840", textAlign: "right" }}>
@@ -1231,7 +1313,7 @@ export default function ClientStatusReport() {
               <div style={{
                 fontSize: 14, color: "rgba(255,255,255,0.45)", marginTop: 6,
               }}>
-                PerformanceLabs.AI + Aplora.ai | Forward-Deployed Execution
+                PerformanceLabs.ai + Aplora.ai | Forward-Deployed Execution
               </div>
             </div>
           </div>
@@ -1350,7 +1432,7 @@ export default function ClientStatusReport() {
         <div style={{
           fontSize: 11, color: "rgba(255,255,255,0.25)", letterSpacing: "0.03em",
         }}>
-          PerformanceLabs.AI | Confidential
+          PerformanceLabs.ai | Confidential
         </div>
         <div style={{ display: "flex", gap: 16 }}>
           <div style={{
