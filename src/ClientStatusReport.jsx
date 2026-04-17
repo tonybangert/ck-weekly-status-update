@@ -354,8 +354,17 @@ const milestones = [
       "Fine-tune metrics, filters, and views based on usage patterns",
       "Stress-test model outputs against domain expertise",
     ],
-    deliverables: ["Platform outputs mapped to real decision-making workflows with tuned metrics, filters, and views"],
-    sprintData: [],
+    deliverables: [
+      "Platform outputs mapped to real decision-making workflows with tuned metrics, filters, and views",
+      "Production-grade Contact Classification Engine: Live in your CK analyst workflow, running reliably with timeout issues cleared.",
+      "Executive access layer: Secure login deployed, giving your leadership team direct visibility without going through the analyst team.",
+    ],
+    sprintData: [
+      "Lapsed buyer analysis: Dormant customer deep-dive complete. Findings ready for re-engagement.",
+      "Contact Classification Engine: Shipped to production. CK analyst timeout issues resolved.",
+      "Sleeper contact model: Recommendation layer live. Surfaces high-potential contacts inside quiet accounts.",
+      "Executive access: Secure login deployed for your leadership team",
+    ],
   },
   {
     id: 8,
@@ -370,17 +379,8 @@ const milestones = [
       "Document specific use cases where the platform changed an outcome",
       "Capture client perspective on value delivered",
     ],
-    deliverables: [
-      "Pre/post benchmarking of platform impact on efficiency gains and decision quality",
-      "Production-grade Contact Classification Engine: Live in your CK analyst workflow, running reliably with timeout issues cleared.",
-      "Executive access layer: Secure login deployed, giving your leadership team direct visibility without going through the analyst team.",
-    ],
-    sprintData: [
-      "Lapsed buyer analysis: Dormant customer deep-dive complete. Findings ready for re-engagement.",
-      "Contact Classification Engine: Shipped to production. CK analyst timeout issues resolved.",
-      "Sleeper contact model: Recommendation layer live. Surfaces high-potential contacts inside quiet accounts.",
-      "Executive access: Secure login deployed for your leadership team",
-    ],
+    deliverables: ["Pre/post benchmarking of platform impact on efficiency gains and decision quality"],
+    sprintData: [],
   },
   {
     id: 9,
