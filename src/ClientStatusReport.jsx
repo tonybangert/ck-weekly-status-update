@@ -371,7 +371,7 @@ const milestones = [
     date: "Fri 4/17",
     title: "Value Validation & KPI Benchmarking",
     subtitle: "Quantifying impact against real outcomes",
-    status: "active",
+    status: "complete",
     details: [
       "Benchmark platform insights against pre-engagement baseline",
       "Identify measurable efficiency gains and decision-quality improvements",
@@ -469,7 +469,7 @@ const milestones = [
     date: "Fri 4/24",
     title: "Value Summary & Forward Roadmap",
     subtitle: "What we built together, what comes next",
-    status: "upcoming",
+    status: "active",
     details: [
       "Present comprehensive value summary with client input",
       "Document ROI indicators and efficiency gains",
@@ -1321,7 +1321,7 @@ export default function ClientStatusReport() {
             <div style={{
               fontSize: 11, color: BRAND.white, letterSpacing: "0.03em",
             }}>
-              Week 7 of 8 | Meeting: Friday 4/17
+              Week 8 of 8 | Meeting: Friday 4/24
             </div>
             <div style={{ display: "flex", gap: 8, marginTop: 8, justifyContent: "flex-end" }}>
               <a
